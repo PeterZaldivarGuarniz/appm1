@@ -13,16 +13,16 @@ app = Flask(__name__)
 def home():
     return 'hola mundo'
 
- @app.route("/predecir", methods=["POST"])
- def predecir():
-     try:
-         resultado = request.form
-         clf = joblib.load("modelo_arbol.pkl")
-         prediccion = clf.predict(resultado)
-         prediccion = round(prediccion)
-     except:
-         prediccion = None
-     return render_template('http://127.0.0.1:8050', result={'Predicción': prediccion})
+@app.route("/predecir", methods=["POST"])
+def predecir():
+    try:
+        resultado = request.form
+        clf = joblib.load("modelo_arbol.pkl")
+        prediccion = clf.predict(resultado)
+        prediccion = round(prediccion)
+    except:
+        prediccion = None
+    return render_template('http://127.0.0.1:8050', result={'Predicción': prediccion})
 
 if __name__ == '__main__':
     app.run()
