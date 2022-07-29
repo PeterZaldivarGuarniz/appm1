@@ -9,27 +9,27 @@ import sklearn
 
 app = Flask(__name__)
 
-def prec(x):
-    if round(x) == 0:
-        r = "Tumor benigno"
-    else:
-        r = "Tumor maligno"
-    return r
+# def prec(x):
+#     if round(x) == 0:
+#         r = "Tumor benigno"
+#     else:
+#         r = "Tumor maligno"
+#     return r
 
 @app.route("/")
 def home():
     return 'hola mundo'
 
-@app.route("/predecir", methods=["POST"])
-def predecir():
-    try:
-        resultado = request.form
-        clf = joblib.load("modelo_arbol.pkl")
-        prediccion = clf.predict(resultado)
-        prediccion = prec(prediccion)
-    except:
-        prediccion = None
-    return render_template('http://127.0.0.1:8050', result={'Predicción': prediccion})
+# @app.route("/predecir", methods=["POST"])
+# def predecir():
+#     try:
+#         resultado = request.form
+#         clf = joblib.load("modelo_arbol.pkl")
+#         prediccion = clf.predict(resultado)
+#         prediccion = prec(prediccion)
+#     except:
+#         prediccion = None
+#     return render_template('http://127.0.0.1:8050', result={'Predicción': prediccion})
 
 if __name__ == '__main__':
     app.run()
