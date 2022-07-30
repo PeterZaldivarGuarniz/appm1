@@ -15,7 +15,7 @@ def home():
     return 'hola mundo'
 @app.route("/predecir", methods = ["POST"])
 def predecir():
-    clf = joblib.load("./modelo_arbol.pkl")
+    clf = joblib.load("modelo_arbol.pkl")
     hrs = json.loads(request.data)
     dato = pd.DataFrame(columns=list(hrs.keys()))
     dato = dato.append(hrs, ignore_index=True)
