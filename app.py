@@ -20,8 +20,8 @@ def predecir():
     clf = joblib.load("modelo_arbol.pkl")
     hrs = json.loads(request.data)
     prediccion = clf.predict(hrs)
-    pre = prec(prediccion)
-    return jsonify({"Prediccion": str(pre)})
+    pre = prec(round(prediccion))
+    return jsonify({"Predicción": str(pre)})
 
 if __name__ == '__main__':
     app.run()
